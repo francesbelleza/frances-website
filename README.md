@@ -1,4 +1,4 @@
-# Frances Belleza • Personal Portfolio & Blog
+# personal portfolio & blog
 
 this is the website i’m building to house my portfolio & blog (thoughts, ideas, and more!)
 
