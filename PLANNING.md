@@ -34,6 +34,7 @@ features:
 ### Sprint 1: Flask Backend Setup (Mini-Milestone)
 **Goal:** Set up a working Flask app + SQLite database  
 <strike>**Due:** April 7</strike>
+
 **Tasks:**
 - [x] Create config file
 - [x] Initialize Flask app
