@@ -18,7 +18,7 @@ features:
 
 ## Overview - project Goals
 
-- [ ] Build a clean and functional Flask backend
+- [x] Build a clean and functional Flask backend
 - [ ] Create a homepage and navigation layout
 - [ ] Display blog posts dynamically from a database
 - [ ] Add new blog posts via form (admin-only or local)
@@ -33,13 +33,13 @@ features:
 
 ### Sprint 1: Flask Backend Setup (Mini-Milestone)
 **Goal:** Set up a working Flask app + SQLite database  
-**Due:** April 7  
+<strike>**Due:** April 7</strike>
 **Tasks:**
-- [ ] Create config file
-- [ ] Initialize Flask app
-- [ ] Create `BlogPost` model
-- [ ] Create and test database
-- [ ] Run app with test route
+- [x] Create config file
+- [x] Initialize Flask app
+- [x] Create `BlogPost` model
+- [x] Create and test database
+- [x] Run app with test route
 
 ---
 
