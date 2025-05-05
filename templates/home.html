@@ -1,12 +1,80 @@
+<!-- templates/home.html -->
 {% extends "base.html" %}
 
-{% block title %}Home{% endblock %}
-
 {% block content %}
-  <section>
-    <h1>hi there, i'm Frances 👋</h1>
-    <p>This is where I share my thoughts, projects, and creative work.</p>
-    <p>Tech • Wellness • Matcha 🍵 • Curiosity</p>
+  <!-- Choice Modal -->
+  <div id="choiceModal" style="
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.75);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+  ">
+    <div style="
+      background:var(--color-bg);
+      padding:2rem;
+      border:2px solid var(--color-accent);
+      border-radius:0.5rem;
+      text-align:center;
+      font-family:monospace;
+    ">
+      <h2 style="color:var(--color-accent); margin-bottom:1rem;">choose your journey:</h2>
+      <button class="choice-btn"
+              style="
+        margin:0.5rem;
+        padding:0.5rem 1rem;
+        background:var(--color-accent);
+        color:var(--color-text);
+        border:none;
+        border-radius:0.25rem;
+        cursor:pointer;
+      " onclick="hideModal()">about</button>
+      <button class="choice-btn"
+              style="
+        margin:0.5rem;
+        padding:0.5rem 1rem;
+        background:var(--color-accent);
+        color:var(--color-text);
+        border:none;
+        border-radius:0.25rem;
+        cursor:pointer;
+      " onclick="location.href='{{ url_for('blog') }}'">blog</button>
+      <button class="choice-btn"
+              style="
+        margin:0.5rem;
+        padding:0.5rem 1rem;
+        background:var(--color-accent);
+        color:var(--color-text);
+        border:none;
+        border-radius:0.25rem;
+        cursor:pointer;
+      " onclick="location.href='{{ url_for('contact') }}'">contact</button>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section style="
+    text-align:center;
+    padding:3rem 0;
+  ">
+    <h1 id="typewriter" style="
+      font-size:3rem;
+      color:var(--color-accent);
+    "></h1>
+    <p style="
+      font-size:1.25rem;
+      color:var(--color-alt);
+      margin-top:1rem;
+    ">welcome to my corner of the web where I share projects, ideas, and inspiration.</p>
   </section>
+
+  <script>
+    function hideModal() {
+      document.getElementById('choiceModal').style.display = 'none';
+    }
+    document.querySelector('#choiceModal button[onclick^="hideModal"]').addEventListener('click', hideModal);
+  </script>
 {% endblock %}
 

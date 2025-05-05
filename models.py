@@ -1,7 +1,12 @@
-from app import db
+# models.py
+from flask_sqlalchemy import SQLAlchemy
 
-class BlogPost(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(255), nullable=False)
-    content = db.Column(db.Text, nullable=False)
+db = SQLAlchemy()
+
+class Post(db.Model):
+    id          = db.Column(db.Integer, primary_key=True)
+    title       = db.Column(db.String(255), nullable=False)
+    body        = db.Column(db.Text, nullable=False)
     date_posted = db.Column(db.DateTime, default=db.func.current_timestamp())
+
+

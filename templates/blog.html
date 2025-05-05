@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Blog</h1>
+  <a href="{{ url_for('new_post') }}">Write a new post</a>
+  {% for post in posts %}
+    <article>
+      <h2>{{ post.title }}</h2>
+      <small>{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+      <p>{{ post.body }}</p>
+    </article>
+  {% else %}
+    <p>No posts yet.</p>
+  {% endfor %}
+{% endblock %}

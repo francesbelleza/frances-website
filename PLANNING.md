@@ -46,18 +46,16 @@ features:
 
 ### Sprint 2: Homepage & Layout
 **Goal:** Set up basic templates (`base.html`, `home.html`)  
-**Due:** April 9  
 **Tasks:**
-- [ ] Create reusable base layout
-- [ ] Build homepage
-- [ ] Add simple CSS or Tailwind setup
-- [ ] Add navbar (Home, Blog, Portfolio, Contact)
+- [x] Create reusable base layout
+- [x] Build homepage
+- [x] Add simple CSS or Tailwind setup
+- [x] Add navbar (Home, Blog, Portfolio, Contact)
 
 ---
 
 ### Sprint 3: Dynamic Blog
 **Goal:** Show blog posts from the database  
-**Due:** April 12  
 **Tasks:**
 - [ ] Create blog listing page
 - [ ] Create single post view page
@@ -67,7 +65,6 @@ features:
 
 ### Sprint 4: Add Content Admin (Optional)
 **Goal:** Add a local form to create blog posts  
-**Due:** April 14  
 **Tasks:**
 - [ ] Add Flask-WTF form
 - [ ] Handle POST requests
@@ -77,7 +74,6 @@ features:
 
 ### Sprint 5: Portfolio Section
 **Goal:** Build a section that shows your coding projects  
-**Due:** April 16  
 **Tasks:**
 - [ ] Create portfolio template
 - [ ] Add project data (local or DB)
@@ -87,7 +83,6 @@ features:
 
 ### Sprint 6: Contact Form + Deployment
 **Goal:** Deploy site + optional contact functionality  
-**Due:** April 18  
 **Tasks:**
 - [ ] Set up contact form (no backend email for now)
 - [ ] Deploy site on Render

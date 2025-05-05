@@ -1,0 +1,151 @@
+:root {
+  --color-bg: #DFE1BC;
+  --color-text: #141313;
+  --color-accent: #795862;
+  --color-highlight: #3D646A;
+  --color-alt: #6A83A9;
+  --color-nav: #A49FB8;
+}
+
+/* Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Monaco, monospace;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+/* Navbar */
+nav {
+  background: var(--color-nav);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+}
+nav > div:first-child {
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: var(--color-accent);
+}
+nav > div:last-child a {
+  margin-right: 1rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background 0.2s;
+  font-family: Monaco, monospace;
+}
+nav > div:last-child a:hover {
+  background: var(--color-alt);
+}
+
+/* Choice Modal */
+#choiceModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+#choiceModal > div {
+  background: var(--color-bg);
+  padding: 2rem;
+  border: 2px solid var(--color-accent);
+  border-radius: 0.5rem;
+  text-align: center;
+  font-family: Monaco, monospace;
+}
+.choice-btn {
+  background: var(--color-accent);
+  color: var(--color-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-family: Monaco, monospace;
+}
+.choice-btn:hover {
+  background: var(--color-highlight);
+}
+
+/* Hero Section */
+section {
+  text-align: center;
+  padding: 3rem 0;
+  font-family: Monaco, monospace;
+}
+#typewriter {
+  font-size: 3rem;
+  color: var(--color-accent);
+  font-weight: bold;
+}
+#typewriter::after {
+  content: '_';
+  animation: blink 0.7s steps(1) infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+section p {
+  font-size: 1.25rem;
+  color: var(--color-alt);
+  margin-top: 1rem;
+}
+
+/* Terminal toggle & overlay */
+#terminalToggle {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-accent);
+  color: var(--color-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-family: Monaco, monospace;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#terminalOverlay {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: black;
+  color: var(--color-highlight);
+  font-family: Monaco, monospace;
+  padding: 1rem;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+#terminalOverlay #terminalContent,
+#terminalOverlay input {
+  font-family: Monaco, monospace;
+}
+
+#terminalOverlay input {
+  background: transparent;
+  border: none;
+  color: var(--color-highlight);
+  width: 90%;
+  outline: none;
+  margin-left: 0.5rem;
+}
+
+button {
+  font-family: Monaco, monospace;
+}

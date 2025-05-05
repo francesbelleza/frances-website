@@ -1,26 +1,154 @@
+<!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>{% block title %}Frances' Site{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="{{ url_for('home') }}">Home</a>
-      <a href="{{ url_for('blog') }}">Blog</a>
-      <a href="{{ url_for('portfolio') }}">Portfolio</a>
-      <a href="{{ url_for('contact') }}">Contact</a>
-    </nav>
-  </header>
+  <!-- Terminal Overlay -->
+  <div id="terminalOverlay" style="
+    display:none;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:30%;
+    background:black;
+    color:var(--color-highlight);
+    font-family:monospace;
+    padding:1rem;
+    overflow-y:auto;
+    z-index:1000;
+  ">
+    <div id="terminalContent"></div>
+    <div><span style="color:var(--color-accent)">&gt; </span><input id="terminalInput" style="
+        background:transparent;
+        border:none;
+        color:var(--color-highlight);
+        width:90%;
+        outline:none;
+      " /></div>
+  </div>
 
-  <main>
+  <!-- Navbar -->
+  <nav style="
+    background:var(--color-nav);
+    padding:1rem 2rem;
+    display:flex;
+    font-family:monospace;
+  ">
+    <div style="font-weight:bold; font-size:1.25rem; color:var(--color-accent);">
+      frances belleza
+    </div>
+    <div style="margin-left:auto; display:flex; gap:1rem;">
+      <a href="{{ url_for('home') }}" style="
+        color:var(--color-accent);
+        text-decoration:none;
+        padding:0.5rem 1rem;
+        border-radius:0.25rem;
+        transition:background 0.2s;
+      " onmouseover="this.style.background='var(--color-alt)'" onmouseout="this.style.background='transparent'">home</a>
+      <a href="{{ url_for('blog') }}" style="
+        color:var(--color-accent);
+        text-decoration:none;
+        padding:0.5rem 1rem;
+        border-radius:0.25rem;
+        transition:background 0.2s;
+      " onmouseover="this.style.background='var(--color-alt)'" onmouseout="this.style.background='transparent'">portfolio</a>
+      <a href="{{ url_for('portfolio') }}" style="
+        color:var(--color-accent);
+        text-decoration:none;
+        padding:0.5rem 1rem;
+        border-radius:0.25rem;
+        transition:background 0.2s;
+      " onmouseover="this.style.background='var(--color-alt)'" onmouseout="this.style.background='transparent'">blog</a>
+      <a href="{{ url_for('contact') }}" style="
+        color:var(--color-accent);
+        text-decoration:none;
+        padding:0.5rem 1rem;
+        border-radius:0.25rem;
+        transition:background 0.2s;
+      " onmouseover="this.style.background='var(--color-alt)'" onmouseout="this.style.background='transparent'">contact</a>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main style="padding:2rem;">
     {% block content %}{% endblock %}
   </main>
 
-  <footer>
-    <p>&copy; 2025 Frances Belleza</p>
-  </footer>
+<!-- Terminal Toggle -->
+  <button id="terminalToggle" style="
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-accent);
+    color: var(--color-text);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-family: Monaco, monospace;
+    cursor: pointer;
+    z-index: 1000;
+  ">
+    ~ terminal ~
+  </button>
+
+  <!-- Inline JS -->
+  <script>
+    // Toggle terminal overlay
+    document.getElementById('terminalToggle').addEventListener('click', function() {
+      const overlay = document.getElementById('terminalOverlay');
+      overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
+      if (overlay.style.display === 'block') {
+        document.getElementById('terminalInput').focus();
+      }
+    });
+
+    // Handle terminal commands
+    document.getElementById('terminalInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const cmd = this.value.trim().toLowerCase();
+        let output = '';
+        if (cmd === 'help') output = 'Commands: help, ls, cat';
+        else if (cmd === 'ls') output = 'blog.md   portfolio.js   contact.html';
+        else if (cmd === 'cat blog.md') output = 'blog is coming soon..';
+        else if (cmd == 'cat contact.md') output = 'contact page coming soon..'
+        else if (cmd == 'cat portfolio.js') output = 'portfolio page coming soon..'
+        else output = 'Command not found: ' + cmd;
+
+        const content = document.getElementById('terminalContent');
+        content.innerHTML +=
+          '<div style="color: var(--color-accent); font-family: Monaco, monospace;">&gt; ' +
+          cmd +
+          '</div>' +
+          '<div style="font-family: Monaco, monospace;">' +
+          output +
+          '</div>';
+        this.value = '';
+        content.parentNode.scrollTop = content.parentNode.scrollHeight;
+      }
+    });
+
+    // Typewriter
+    document.addEventListener('DOMContentLoaded', function() {
+      var el = document.getElementById('typewriter');
+      if (!el) return;
+      var msg = "hi, i'm frances";
+      var i = 0;
+      function tick() {
+        if (i <= msg.length) {
+          el.textContent = msg.slice(0, i++);
+          setTimeout(tick, 100);
+        }
+      }
+      tick();
+    });
+  </script>
 </body>
 </html>
+
