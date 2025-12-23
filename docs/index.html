@@ -20,7 +20,7 @@
   <nav>
     <div class="nav-brand">frances belleza</div>
     <div class="nav-links">
-      <a href="index.html" class="active">home</a>
+      <a href="index.html#about" class="active">about</a>
       <a href="portfolio.html">portfolio</a>
       <a href="blog.html">blog</a>
       <a href="contact.html">contact</a>
@@ -48,14 +48,14 @@
     </section>
 
     <!-- About Section -->
-    <section class="about-section">
+    <section class="about-section" id="about">
       <h2>about me</h2>
       <div class="about-content">
         <p>
           i'm an undergraduate student studying software engineering (graduating spring 2027) with a bit of an unconventional path. before diving into tech, i spent four and a half years as a yoga teacher in san francisco, leading workshops, hosting community events, and collaborating with organizations like lululemon, daybreaker, and the sf lgbt center. that chapter taught me a lot about building spaces where people feel supported.
         </p>
         <p>
-          honestly? i came to tech because it's versatile and lucrative. but the more i learned, the more i fell in love with how software and ai/ml can be woven into just about anything. now i get to explore how technology intersects with my other passions: the human body, physics, electricity, and how data-driven solutions can genuinely help people.
+          honestly? i came to tech because it's versatile and lucrative. but the more i learned, the more i fell in love with how software and ai/ml can be woven into just about anything. now i get to explore how technology intersects with my other passions: the human body/health, physics, electricity, and how data-driven solutions can genuinely help people.
         </p>
         <p>
           currently, i'm working in a research lab supporting electrophysiology experiments, behavioral studies, and training machine learning models. i'm drawn to biotech and mission-driven spaces where community, intention, and impact come first.
@@ -98,6 +98,10 @@
   <script>
     function hideModal() {
       document.getElementById('choiceModal').style.display = 'none';
+    }
+    // Auto-hide modal if coming from nav link (has hash)
+    if (window.location.hash) {
+      hideModal();
     }
   </script>
 </body>
