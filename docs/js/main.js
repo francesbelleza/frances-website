@@ -341,7 +341,7 @@ async function processCommand(cmd, terminalContent) {
     if (isAuthenticated) {
       return 'frances belleza - keeper of the grimoire';
     }
-    return 'a fellow traveler on the path of code';
+    return 'hmmmmm who are you?';
   }
 
   if (cmd === 'date') {
