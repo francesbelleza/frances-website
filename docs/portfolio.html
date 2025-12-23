@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>portfolio - frances belleza</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Terminal Overlay -->
+  <div id="terminalOverlay">
+    <div id="terminalContent"></div>
+    <div class="terminal-input-line">
+      <span class="terminal-prompt">&gt;</span>
+      <input id="terminalInput" type="text" autocomplete="off" />
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-brand">frances belleza</div>
+    <div class="nav-links">
+      <a href="index.html">home</a>
+      <a href="portfolio.html" class="active">portfolio</a>
+      <a href="blog.html">blog</a>
+      <a href="contact.html">contact</a>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main>
+    <section class="page-header">
+      <h1>portfolio</h1>
+      <p>a collection of projects from my journey as a developer</p>
+    </section>
+
+    <div class="projects-grid" id="projectsGrid">
+      <!-- wilkinsonLabTools -->
+      <div class="project-card">
+        <h3>wilkinsonlabtools</h3>
+        <p>a streamlit web app for visualizing rodent behavioral test data. upload csv files from ladder test experiments and generate jittered scatter plots organized by run, genotype, and biological sex.</p>
+        <div class="project-tags">
+          <span class="tag">python</span>
+          <span class="tag">streamlit</span>
+          <span class="tag">data viz</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/francesbelleza/wilkinsonLabTools" target="_blank" class="btn-github">github</a>
+        </div>
+      </div>
+
+      <!-- signl (preswald) -->
+      <div class="project-card">
+        <h3>signl</h3>
+        <p>a health & wellness dashboard that visualizes lifestyle patterns among individuals with heart disease. analyzes metrics like sleep, heart rate, blood pressure, and more to help identify patterns in patient data.</p>
+        <div class="project-tags">
+          <span class="tag">python</span>
+          <span class="tag">preswald</span>
+          <span class="tag">health data</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/francesbelleza/preswald_HealthWellness_app" target="_blank" class="btn-github">github</a>
+        </div>
+      </div>
+
+      <!-- ProfMeet -->
+      <div class="project-card">
+        <h3>profmeet</h3>
+        <p>a desktop scheduling system that streamlines student-faculty interactions. faculty can manage office hours and time slots while students can book, modify, or cancel appointments through an intuitive interface.</p>
+        <div class="project-tags">
+          <span class="tag">java</span>
+          <span class="tag">javafx</span>
+          <span class="tag">sqlite</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/ericlong12/ProfMeet" target="_blank" class="btn-github">github</a>
+        </div>
+      </div>
+
+      <!-- Research Project -->
+      <div class="project-card">
+        <h3>angelman syndrome motor analysis</h3>
+        <p>training a machine learning model using sleap to analyze gait patterns and motor deficits in mice modeling angelman syndrome. comparing manual vs ml-assisted analysis of ladder walking tests.</p>
+        <div class="project-tags">
+          <span class="tag">python</span>
+          <span class="tag">sleap</span>
+          <span class="tag">machine learning</span>
+          <span class="tag">research</span>
+        </div>
+        <div class="project-links">
+          <a href="research.html" class="btn-primary">view research</a>
+        </div>
+      </div>
+
+      <!-- This Website -->
+      <div class="project-card">
+        <h3>frances.dev</h3>
+        <p>this frieren-themed portfolio site you're on right now! built with vanilla html, css, and javascript. features a custom terminal, supabase-powered blog, and magical twinkle effects.</p>
+        <div class="project-tags">
+          <span class="tag">html/css</span>
+          <span class="tag">javascript</span>
+          <span class="tag">supabase</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/francesbelleza/frances-website" target="_blank" class="btn-github">github</a>
+        </div>
+      </div>
+
+      <!-- Coming Soon -->
+      <div class="project-card coming-soon">
+        <h3>more on the way...</h3>
+        <p>currently working on a planet simulator and a mindfulness app. stay tuned!</p>
+        <div class="project-tags">
+          <span class="tag">in progress</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Terminal Toggle -->
+  <button id="terminalToggle">~ spells ~</button>
+
+  <script src="js/main.js"></script>
+  <script src="js/supabase-config.js"></script>
+</body>
+</html>

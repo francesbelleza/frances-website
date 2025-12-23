@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>research - frances belleza</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Terminal Overlay -->
+  <div id="terminalOverlay">
+    <div id="terminalContent"></div>
+    <div class="terminal-input-line">
+      <span class="terminal-prompt">&gt;</span>
+      <input id="terminalInput" type="text" autocomplete="off" />
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-brand">frances belleza</div>
+    <div class="nav-links">
+      <a href="index.html">home</a>
+      <a href="portfolio.html">portfolio</a>
+      <a href="blog.html">blog</a>
+      <a href="contact.html">contact</a>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main>
+    <article class="research-page">
+      <div class="research-header">
+        <h1>angelman syndrome motor analysis</h1>
+        <p class="research-subtitle">comparison of performance on a ladder walking task between mice modeling angelman syndrome and controls using manual and machine learning assisted analysis technique</p>
+      </div>
+
+      <img src="https://media.licdn.com/dms/image/v2/D5622AQEieXhJGvM48g/feedshare-shrink_2048_1536/B56Zq0HmLFG0Aw-/0/1763958482729?e=1767830400&v=beta&t=5SXP_k4ct5IV4VolobSZjSBXMT2S4cA9JCL1pFCCMIM" alt="Research poster presentation" class="research-image" />
+
+      <div class="research-content">
+        <h2>abstract</h2>
+        <p>
+          angelman syndrome (as) is a neurodevelopmental disorder caused by maternal deletion of the ubiquitin ligase ube3a, which leads to gait abnormalities as well as decreased piezo 2 channel activity in sensory neurons involved in sensing muscle stretch. these muscle proprioceptors are required for proper motor movement and balance. our aim is to better understand motor deficits and develop tools to measure it in as.
+        </p>
+        <p>
+          we hypothesize that as mice will exhibit more missteps and gait abnormalities, including longer stride lengths, compared to our wild-type control (wt) mice during a ladder walking test. we chose a ladder assay where rungs could be removed to challenge the motor control of male and female as and wt (n = 6 per group) mice.
+        </p>
+
+        <h2>methodology</h2>
+        <p>
+          motor performance was first scored manually for slips on the rung as well as the number of steps to reach the end of the ladder as a measure of stride length. we are training a machine learning model using social leap estimates animal poses (sleap) to determine an unbiased count of missteps and stride length. sleap is a deep-learning framework that tracks and estimates animal pose positions to allow for gait analysis.
+        </p>
+
+        <h2>results</h2>
+        <p>
+          manual scoring shows that when as mice walked through a ladder with rungs spaced every 1.00 cm, they had fewer average steps [48.00 ± 4.24 steps] than wt mice [55.83 ± 9.04 steps]. this suggests a longer stride length, which is what has been reported in previous studies. the number of missteps by as mice [3.00 ± 2.00] when random rungs had been removed from the ladder do not seem to vary from our wt mice [2.67 ± 1.366].
+        </p>
+        <p>
+          our machine learning model has been trained on 86 frames of raw data and can predict mouse limb placement with minor errors on unseen data.
+        </p>
+
+        <h2>future directions</h2>
+        <p>
+          currently, we are increasing our sample size to have sufficient statistical power to determine if as we hypothesized as mice to make more motor errors and have longer strides on the ladder. we are also increasing the number of training frames to improve model performance, as well as developing a python script slip counter to automate data analysis.
+        </p>
+        <p>
+          ultimately, this approach will provide a scalable framework for quantifying motor deficits in as and serve as a model to other neurodevelopmental disorders with atypical gait patterns.
+        </p>
+
+        <div class="research-tags">
+          <span class="tag">python</span>
+          <span class="tag">sleap</span>
+          <span class="tag">machine learning</span>
+          <span class="tag">neuroscience</span>
+          <span class="tag">behavioral analysis</span>
+        </div>
+      </div>
+
+      <div class="back-link">
+        <a href="portfolio.html">← back to portfolio</a>
+      </div>
+    </article>
+  </main>
+
+  <!-- Terminal Toggle -->
+  <button id="terminalToggle">~ spells ~</button>
+
+  <script src="js/main.js"></script>
+  <script src="js/supabase-config.js"></script>
+</body>
+</html>

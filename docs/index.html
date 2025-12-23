@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>frances belleza</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Terminal Overlay -->
+  <div id="terminalOverlay">
+    <div id="terminalContent"></div>
+    <div class="terminal-input-line">
+      <span class="terminal-prompt">&gt;</span>
+      <input id="terminalInput" type="text" autocomplete="off" />
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-brand">frances belleza</div>
+    <div class="nav-links">
+      <a href="index.html" class="active">home</a>
+      <a href="portfolio.html">portfolio</a>
+      <a href="blog.html">blog</a>
+      <a href="contact.html">contact</a>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main>
+    <!-- Choice Modal -->
+    <div id="choiceModal">
+      <div class="modal-content">
+        <h2>choose your journey:</h2>
+        <div class="modal-buttons">
+          <button class="choice-btn" onclick="hideModal()">about</button>
+          <button class="choice-btn" onclick="location.href='blog.html'">blog</button>
+          <button class="choice-btn" onclick="location.href='contact.html'">contact</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1 id="typewriter"></h1>
+      <p>welcome to my corner of the web where I share projects, ideas, and inspiration.</p>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <h2>about me</h2>
+      <div class="about-content">
+        <p>
+          i'm an undergraduate student studying software engineering (graduating spring 2027) with a bit of an unconventional path. before diving into tech, i spent four and a half years as a yoga teacher in san francisco, leading workshops, hosting community events, and collaborating with organizations like lululemon, daybreaker, and the sf lgbt center. that chapter taught me a lot about building spaces where people feel supported.
+        </p>
+        <p>
+          honestly? i came to tech because it's versatile and lucrative. but the more i learned, the more i fell in love with how software and ai/ml can be woven into just about anything. now i get to explore how technology intersects with my other passions: the human body, physics, electricity, and how data-driven solutions can genuinely help people.
+        </p>
+        <p>
+          currently, i'm working in a research lab supporting electrophysiology experiments, behavioral studies, and training machine learning models. i'm drawn to biotech and mission-driven spaces where community, intention, and impact come first.
+        </p>
+        <p>
+          when i'm not coding or reading research papers, you'll find me doing pilates, cooking, or drinking way too much tea (i might be a tea connoisseur at this point). i'm also learning a classical form of indian dance and songs on my guitar.
+        </p>
+        <p class="about-tagline">
+          ~ like frieren, i'm on my own long journey of learning and collecting spells along the way ~
+        </p>
+      </div>
+    </section>
+
+    <!-- Featured Projects Preview -->
+    <section class="featured">
+      <h2>featured projects</h2>
+      <div class="featured-grid">
+        <div class="featured-card">
+          <h3>wilkinsonlabtools</h3>
+          <p>a streamlit app for visualizing rodent behavioral test data from lab experiments.</p>
+          <a href="https://github.com/francesbelleza/wilkinsonLabTools" target="_blank" class="btn-github">github</a>
+        </div>
+        <div class="featured-card">
+          <h3>signl</h3>
+          <p>a health & wellness dashboard that visualizes lifestyle patterns in heart disease patients.</p>
+          <a href="https://github.com/francesbelleza/preswald_HealthWellness_app" target="_blank" class="btn-github">github</a>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 1.5rem;">
+        <a href="portfolio.html" class="btn-primary">view all projects</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Terminal Toggle -->
+  <button id="terminalToggle">~ spells ~</button>
+
+  <script src="js/main.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script>
+    function hideModal() {
+      document.getElementById('choiceModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

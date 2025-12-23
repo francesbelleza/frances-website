@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Frieren's staff - red and gold with red orb -->
+  <!-- Staff shaft - dark red/maroon -->
+  <line x1="6" y1="30" x2="14" y2="14" stroke="#8B1A1A" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Gold accent on shaft -->
+  <line x1="10" y1="22" x2="11" y2="20" stroke="#DAA520" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Circular ring at top - gold -->
+  <circle cx="16" cy="8" r="6" stroke="#DAA520" stroke-width="2.5" fill="none"/>
+  <!-- Red orb in center -->
+  <circle cx="16" cy="8" r="3" fill="#C41E3A"/>
+  <!-- Shine on orb -->
+  <circle cx="15" cy="7" r="1" fill="#FF6B6B" opacity="0.7"/>
+</svg>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>blog - frances belleza</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Terminal Overlay -->
+  <div id="terminalOverlay">
+    <div id="terminalContent"></div>
+    <div class="terminal-input-line">
+      <span class="terminal-prompt">&gt;</span>
+      <input id="terminalInput" type="text" autocomplete="off" />
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-brand">frances belleza</div>
+    <div class="nav-links">
+      <a href="index.html">home</a>
+      <a href="portfolio.html">portfolio</a>
+      <a href="blog.html" class="active">blog</a>
+      <a href="contact.html">contact</a>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main>
+    <section class="page-header">
+      <h1>blog</h1>
+      <p>my general thoughts on life, science, learning, and adventures in tech</p>
+    </section>
+
+    <div class="blog-posts" id="blogPosts">
+      <div class="loading">loading posts...</div>
+    </div>
+  </main>
+
+  <!-- Terminal Toggle -->
+  <button id="terminalToggle">~ spells ~</button>
+
+  <script src="js/main.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script>
+    // Fetch and display blog posts
+    async function loadBlogPosts() {
+      const container = document.getElementById('blogPosts');
+
+      // Wait for Supabase to be ready
+      if (typeof supabaseClient === 'undefined') {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>loading...</p>
+          </div>
+        `;
+        return;
+      }
+
+      try {
+        const { data: posts, error } = await supabaseClient
+          .from('posts')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        if (!posts || posts.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <p>no posts yet... check back soon!</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = posts.map(post => {
+          // Create a preview (first 150 chars)
+          const preview = post.body.length > 150
+            ? post.body.substring(0, 150) + '...'
+            : post.body;
+
+          return `
+            <article class="blog-post-preview" onclick="window.location.href='post.html?id=${post.id}'">
+              ${post.image_url ? `<img src="${post.image_url}" alt="${post.title}" class="blog-image" loading="lazy" />` : ''}
+              <h2>${post.title}</h2>
+              <time>${new Date(post.created_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}</time>
+              <p>${preview}</p>
+              <span class="read-more">read more →</span>
+            </article>
+          `;
+        }).join('');
+
+      } catch (err) {
+        console.error('Error loading posts:', err);
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>couldn't load posts right now</p>
+          </div>
+        `;
+      }
+    }
+
+    // Load posts when Supabase is ready
+    window.addEventListener('supabaseReady', loadBlogPosts);
+
+    // Also try loading on DOMContentLoaded in case Supabase loaded first
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof supabaseClient !== 'undefined') {
+        loadBlogPosts();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>post - frances belleza</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Terminal Overlay -->
+  <div id="terminalOverlay">
+    <div id="terminalContent"></div>
+    <div class="terminal-input-line">
+      <span class="terminal-prompt">&gt;</span>
+      <input id="terminalInput" type="text" autocomplete="off" />
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-brand">frances belleza</div>
+    <div class="nav-links">
+      <a href="index.html">home</a>
+      <a href="portfolio.html">portfolio</a>
+      <a href="blog.html" class="active">blog</a>
+      <a href="contact.html">contact</a>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main>
+    <div id="postContent">
+      <div class="loading">loading post...</div>
+    </div>
+
+    <div class="back-link">
+      <a href="blog.html">← back to blog</a>
+    </div>
+  </main>
+
+  <!-- Terminal Toggle -->
+  <button id="terminalToggle">~ spells ~</button>
+
+  <script src="js/main.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script>
+    // Get post ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('id');
+
+    async function loadPost() {
+      const container = document.getElementById('postContent');
+
+      if (!postId) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>post not found</p>
+          </div>
+        `;
+        return;
+      }
+
+      if (typeof supabaseClient === 'undefined') {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>loading...</p>
+          </div>
+        `;
+        return;
+      }
+
+      try {
+        const { data: post, error } = await supabaseClient
+          .from('posts')
+          .select('*')
+          .eq('id', postId)
+          .single();
+
+        if (error) throw error;
+
+        if (!post) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <p>post not found</p>
+            </div>
+          `;
+          return;
+        }
+
+        // Update page title
+        document.title = `${post.title} - frances belleza`;
+
+        // Convert newlines to <br> for proper formatting
+        const formattedBody = post.body.replace(/\n/g, '<br>');
+
+        container.innerHTML = `
+          <article class="blog-post-full">
+            <time>${new Date(post.created_at).toLocaleDateString('en-US', {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}</time>
+            <h1>${post.title}</h1>
+            ${post.image_url ? `<img src="${post.image_url}" alt="${post.title}" class="blog-image-full" />` : ''}
+            <div class="post-body">${formattedBody}</div>
+          </article>
+        `;
+
+      } catch (err) {
+        console.error('Error loading post:', err);
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>couldn't load post</p>
+          </div>
+        `;
+      }
+    }
+
+    // Load post when Supabase is ready
+    window.addEventListener('supabaseReady', loadPost);
+
+    // Also try loading on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof supabaseClient !== 'undefined') {
+        loadPost();
+      }
+    });
+  </script>
+</body>
+</html>
