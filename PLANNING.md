@@ -3,96 +3,76 @@
 ## Overview
 
 my personal website:
-portfolio & blog 
+portfolio & blog
 
-tech stack: python & flask
+tech stack: html, css, javascript, supabase (static site hosted on github pages)
 
 features:
-- dynamic blog (stored in a database)
-- portfolio of coding projects
-- home/about section that reflects personal voice and values
-- contact form (eventually with email integration)
-- links to socials
+- [x] dynamic blog (stored in supabase)
+- [x] portfolio of coding projects
+- [x] home/about section that reflects personal voice and values
+- [x] contact form (basic, can add email integration later)
+- [x] links to socials
+- [x] frieren-themed terminal with easter eggs
+- [x] custom cursor (frieren's staff) + twinkle effects
+- [x] research page for angelman syndrome project
 
 ---
 
-## Overview - project Goals
+## Completed Features
 
-- [x] Build a clean and functional Flask backend
-- [ ] Create a homepage and navigation layout
-- [ ] Display blog posts dynamically from a database
-- [ ] Add new blog posts via form (admin-only or local)
-- [ ] Create a portfolio/projects page with descriptions and links
-- [ ] Style the site with TailwindCSS or custom CSS
-- [ ] Deploy the app to Render with PostgreSQL
-- [ ] Add README with project details and preview image
+### Homepage
+- [x] hero section with typewriter effect
+- [x] about me section with personal story
+- [x] featured projects grid
+- [x] frieren tagline
 
----
+### Blog
+- [x] supabase integration for dynamic posts
+- [x] blog listing page
+- [x] individual post pages
+- [x] terminal-based post creation (login, write command)
+- [x] line break formatting support
 
-## Sprints & Milestones
+### Portfolio
+- [x] project cards with teal borders
+- [x] github links with purple buttons (teal on hover)
+- [x] tags for technologies
+- [x] wilkinsonlabtools, signl, profmeet, research, this website
+- [x] "coming soon" placeholder
 
-### Sprint 1: Flask Backend Setup (Mini-Milestone)
-**Goal:** Set up a working Flask app + SQLite database  
-<strike>**Due:** April 7</strike>
+### Research Page
+- [x] dedicated page for angelman syndrome motor analysis
+- [x] abstract with methodology, results, future directions
+- [x] poster image from linkedin
+- [x] back link to portfolio
 
-**Tasks:**
-- [x] Create config file
-- [x] Initialize Flask app
-- [x] Create `BlogPost` model
-- [x] Create and test database
-- [x] Run app with test route
+### Terminal (~ spells ~)
+- [x] navigation commands (go blog, go portfolio, etc.)
+- [x] cat files: frieren.txt, apothecary.txt, currently-consuming.md, grimoire.txt
+- [x] frieren character easter eggs
+- [x] admin commands (login, write, logout)
 
----
-
-### Sprint 2: Homepage & Layout
-**Goal:** Set up basic templates (`base.html`, `home.html`)  
-**Tasks:**
-- [x] Create reusable base layout
-- [x] Build homepage
-- [x] Add simple CSS or Tailwind setup
-- [x] Add navbar (Home, Blog, Portfolio, Contact)
-
----
-
-### Sprint 3: Dynamic Blog
-**Goal:** Show blog posts from the database  
-**Tasks:**
-- [ ] Create blog listing page
-- [ ] Create single post view page
-- [ ] Add dummy data to test it
+### Styling
+- [x] custom frieren-inspired color palette
+- [x] custom cursor (frieren's staff svg)
+- [x] twinkle effect on click
+- [x] responsive design
+- [x] teal project cards, purple buttons
 
 ---
 
-### Sprint 4: Add Content Admin (Optional)
-**Goal:** Add a local form to create blog posts  
-**Tasks:**
-- [ ] Add Flask-WTF form
-- [ ] Handle POST requests
-- [ ] Save new posts to the database
+## Deployment
 
----
-
-### Sprint 5: Portfolio Section
-**Goal:** Build a section that shows your coding projects  
-**Tasks:**
-- [ ] Create portfolio template
-- [ ] Add project data (local or DB)
-- [ ] Include GitHub links and images
-
----
-
-### Sprint 6: Contact Form + Deployment
-**Goal:** Deploy site + optional contact functionality  
-**Tasks:**
-- [ ] Set up contact form (no backend email for now)
-- [ ] Deploy site on Render
-- [ ] Switch from SQLite to PostgreSQL
-- [ ] Update README with live link and image
+- [x] static site in /docs folder
+- [ ] push to deploy branch
+- [ ] merge to main
+- [ ] enable github pages from main/docs
 
 ---
 
 ## Notes
-- keeping blog & portfolio minimal to start but also pretty & polish later
-- focus is on learning and building my site that represents me
-
+- switched from flask to static site for simplicity
+- using supabase for blog backend (anon key is public by design, rls protects data)
+- frieren + apothecary diaries themed throughout
 

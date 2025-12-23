@@ -51,14 +51,14 @@
         border-radius:0.25rem;
         transition:background 0.2s;
       " onmouseover="this.style.background='var(--color-alt)'" onmouseout="this.style.background='transparent'">home</a>
-      <a href="{{ url_for('blog') }}" style="
+      <a href="{{ url_for('portfolio') }}" style="
         color:var(--color-accent);
         text-decoration:none;
         padding:0.5rem 1rem;
         border-radius:0.25rem;
         transition:background 0.2s;
       " onmouseover="this.style.background='var(--color-alt)'" onmouseout="this.style.background='transparent'">portfolio</a>
-      <a href="{{ url_for('portfolio') }}" style="
+      <a href="{{ url_for('blog') }}" style="
         color:var(--color-accent);
         text-decoration:none;
         padding:0.5rem 1rem;
@@ -114,12 +114,63 @@
       if (e.key === 'Enter') {
         const cmd = this.value.trim().toLowerCase();
         let output = '';
-        if (cmd === 'help') output = 'Commands: help, ls, cat';
-        else if (cmd === 'ls') output = 'blog.md   portfolio.js   contact.html';
-        else if (cmd === 'cat blog.md') output = 'blog is coming soon..';
-        else if (cmd == 'cat contact.md') output = 'contact page coming soon..'
-        else if (cmd == 'cat portfolio.js') output = 'portfolio page coming soon..'
-        else output = 'Command not found: ' + cmd;
+
+        // Basic commands
+        if (cmd === 'help') {
+          output = 'Commands: help, ls, cat &lt;file&gt;, clear, whoami, date, secret<br>Navigation: go &lt;page&gt;, exit';
+        } else if (cmd === 'ls') {
+          output = 'blog.md   portfolio.md   contact.md   grimoire.txt';
+        } else if (cmd === 'exit' || cmd === 'quit' || cmd === 'close') {
+          document.getElementById('terminalOverlay').style.display = 'none';
+          this.value = '';
+          return;
+        } else if (cmd === 'go blog' || cmd === 'cd blog' || cmd === 'blog') {
+          window.location.href = "{{ url_for('blog') }}";
+          output = 'navigating to blog...';
+        } else if (cmd === 'go portfolio' || cmd === 'cd portfolio' || cmd === 'portfolio') {
+          window.location.href = "{{ url_for('portfolio') }}";
+          output = 'navigating to portfolio...';
+        } else if (cmd === 'go contact' || cmd === 'cd contact' || cmd === 'contact') {
+          window.location.href = "{{ url_for('contact') }}";
+          output = 'navigating to contact...';
+        } else if (cmd === 'go home' || cmd === 'cd home' || cmd === 'home' || cmd === 'cd ~') {
+          window.location.href = "{{ url_for('home') }}";
+          output = 'navigating home...';
+        } else if (cmd === 'cat blog.md') {
+          output = 'blog is coming soon..';
+        } else if (cmd === 'cat contact.md') {
+          output = 'contact page coming soon..';
+        } else if (cmd === 'cat portfolio.md') {
+          output = 'portfolio page coming soon..';
+        } else if (cmd === 'cat grimoire.txt') {
+          output = '~ a collection of spells from a thousand-year journey ~';
+        } else if (cmd === 'clear') {
+          document.getElementById('terminalContent').innerHTML = '';
+          this.value = '';
+          return;
+        } else if (cmd === 'whoami') {
+          output = 'a fellow traveler on the path of code';
+        } else if (cmd === 'date') {
+          output = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        }
+        // Frieren easter eggs
+        else if (cmd === 'secret' || cmd === 'cast spell') {
+          output = 'Zoltraak! ...but nothing happened. maybe try a different spell?';
+        } else if (cmd === 'frieren') {
+          output = '"I just wanted to get to know him better..." - Frieren';
+        } else if (cmd === 'himmel') {
+          output = '"I think being direct is the best way." - Himmel the Hero';
+        } else if (cmd === 'fern') {
+          output = 'Fern is judging you silently.';
+        } else if (cmd === 'stark') {
+          output = 'Stark ran away! ...but came back because he is actually very brave.';
+        } else if (cmd === 'magic') {
+          output = 'Ordinary magic, used by ordinary people, is truly beautiful.';
+        } else if (cmd === 'flower field' || cmd === 'field of flowers') {
+          output = 'A sea of flowers blooms in the meadow... the view Himmel wanted to show you.';
+        } else {
+          output = 'Command not found: ' + cmd + ' (try "help")';
+        }
 
         const content = document.getElementById('terminalContent');
         content.innerHTML +=

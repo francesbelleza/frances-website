@@ -1,0 +1,74 @@
+<!-- templates/portfolio.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <section style="max-width: 800px; margin: 0 auto;">
+    <h1 style="
+      font-size: 2.5rem;
+      color: var(--color-accent);
+      margin-bottom: 0.5rem;
+    ">portfolio</h1>
+    <p style="
+      color: var(--color-alt);
+      margin-bottom: 2rem;
+    ">a collection of projects from my journey as a developer</p>
+
+    <div id="projectsGrid" style="
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    ">
+      {% for project in projects %}
+        <article style="
+          background: var(--color-nav);
+          border: 2px solid var(--color-accent);
+          border-radius: 0.5rem;
+          padding: 1.5rem;
+          transition: transform 0.2s;
+        " onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+          <h2 style="
+            color: var(--color-accent);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+          ">{{ project.title }}</h2>
+          <p style="
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+          ">{{ project.description }}</p>
+          <div style="display: flex; gap: 0.75rem;">
+            {% if project.demo %}
+              <a href="{{ project.demo }}" target="_blank" style="
+                background: var(--color-accent);
+                color: var(--color-bg);
+                padding: 0.4rem 0.8rem;
+                border-radius: 0.25rem;
+                text-decoration: none;
+                font-size: 0.85rem;
+              ">demo</a>
+            {% endif %}
+            {% if project.github %}
+              <a href="{{ project.github }}" target="_blank" style="
+                background: var(--color-highlight);
+                color: var(--color-bg);
+                padding: 0.4rem 0.8rem;
+                border-radius: 0.25rem;
+                text-decoration: none;
+                font-size: 0.85rem;
+              ">github</a>
+            {% endif %}
+          </div>
+        </article>
+      {% else %}
+        <p style="
+          color: var(--color-alt);
+          grid-column: 1 / -1;
+          text-align: center;
+          padding: 3rem;
+          border: 2px dashed var(--color-accent);
+          border-radius: 0.5rem;
+        ">projects coming soon... currently leveling up my skills!</p>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
