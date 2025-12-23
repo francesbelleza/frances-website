@@ -36,7 +36,7 @@
 
     <div class="contact-container">
       <!-- Contact Form -->
-      <form id="contactForm" class="contact-form">
+      <form action="https://formspree.io/f/mrezrgwj" method="POST" class="contact-form">
         <div class="form-group">
           <label for="name">name</label>
           <input type="text" id="name" name="name" required />
@@ -71,12 +71,5 @@
 
   <script src="js/main.js"></script>
   <script src="js/supabase-config.js"></script>
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // For now, show a message. Can integrate with Formspree or similar later.
-      alert('Thanks for reaching out! (Form submission coming soon)');
-    });
-  </script>
 </body>
 </html>
