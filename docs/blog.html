@@ -44,6 +44,7 @@
 
   <script src="js/main.js"></script>
   <script src="js/supabase-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     // Fetch and display blog posts
     async function loadBlogPosts() {
@@ -77,10 +78,15 @@
         }
 
         container.innerHTML = posts.map(post => {
+          // Strip markdown formatting for preview by converting to HTML then stripping tags
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = marked.parse(post.body);
+          const plainText = tempDiv.textContent || tempDiv.innerText || '';
+
           // Create a preview (first 150 chars)
-          const preview = post.body.length > 150
-            ? post.body.substring(0, 150) + '...'
-            : post.body;
+          const preview = plainText.length > 150
+            ? plainText.substring(0, 150) + '...'
+            : plainText;
 
           return `
             <article class="blog-post-preview" onclick="window.location.href='post.html?id=${post.id}'">
