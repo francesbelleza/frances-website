@@ -410,6 +410,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .blog-post {
@@ -488,7 +490,7 @@ main {
 
 /* Full Blog Post Page */
 .blog-post-full {
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
   background: var(--color-nav);
   border: 2px solid var(--color-accent);
