@@ -490,7 +490,7 @@ main {
 
 /* Full Blog Post Page */
 .blog-post-full {
-  max-width: 950px;
+  max-width: 900px;
   margin: 0 auto;
   background: var(--color-nav);
   border: 2px solid var(--color-accent);
