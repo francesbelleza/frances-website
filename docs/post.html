@@ -91,7 +91,8 @@
         // Update page title
         document.title = `${post.title} - frances belleza`;
 
-        // Parse markdown to HTML
+        // Parse markdown to HTML (breaks: true converts single line breaks to <br>)
+        marked.setOptions({ breaks: true });
         const formattedBody = marked.parse(post.body);
 
         container.innerHTML = `
