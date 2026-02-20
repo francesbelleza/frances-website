@@ -65,9 +65,9 @@ features:
 ## Deployment
 
 - [x] static site in /docs folder
-- [ ] push to deploy branch
-- [ ] merge to main
-- [ ] enable github pages from main/docs
+- [x] push to deploy branch
+- [x] merge to main
+- [x] enable github pages from main/docs
 
 ---
 
