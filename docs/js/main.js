@@ -6,8 +6,9 @@
 // ============================================
 // Terminal State
 // ============================================
-let terminalMode = 'normal'; // 'normal', 'password', 'write-title', 'write-body', 'write-image'
+let terminalMode = 'normal'; // 'normal', 'login-email', 'password', 'write-title', 'write-body', 'write-image'
 let pendingPost = {};
+let pendingEmail = '';
 let isAuthenticated = false;
 
 // ============================================
@@ -83,8 +84,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!cmd && terminalMode === 'normal') return;
 
         // Handle different modes
+        if (terminalMode === 'login-email') {
+          pendingEmail = input;
+          terminalContent.innerHTML += '<div style="color: var(--color-accent);">&gt; ' + escapeHtml(input) + '</div>';
+          terminalContent.innerHTML += '<div>enter password:</div>';
+          this.type = 'password';
+          terminalMode = 'password';
+          this.value = '';
+          return;
+        }
+
         if (terminalMode === 'password') {
           await handlePasswordInput(input, terminalContent);
+          pendingEmail = '';
           this.value = '';
           this.type = 'text';
           terminalMode = 'normal';
@@ -129,12 +141,11 @@ document.addEventListener('DOMContentLoaded', function() {
           return;
         }
 
-        // Special case for login - switch to password mode
+        // Special case for login - prompt for email first
         if (cmd === 'login' && !isAuthenticated) {
           terminalContent.innerHTML += '<div style="color: var(--color-accent);">&gt; login</div>';
-          terminalContent.innerHTML += '<div>enter password:</div>';
-          this.type = 'password';
-          terminalMode = 'password';
+          terminalContent.innerHTML += '<div>enter email:</div>';
+          terminalMode = 'login-email';
           this.value = '';
           return;
         }
@@ -196,7 +207,7 @@ async function handlePasswordInput(password, terminalContent) {
 
   try {
     const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email: 'belleza.frances@gmail.com',
+      email: pendingEmail,
       password: password
     });
 
