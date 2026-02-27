@@ -106,15 +106,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (terminalMode === 'write-title') {
           pendingPost.title = input;
           terminalContent.innerHTML += '<div style="color: var(--color-accent);">&gt; ' + escapeHtml(input) + '</div>';
-          terminalContent.innerHTML += '<div>enter post body (use \\n for line breaks):</div>';
+          terminalContent.innerHTML += '<div>enter post body (use \\n for line breaks, [img:url] for inline images):</div>';
           terminalMode = 'write-body';
           this.value = '';
           return;
         }
 
         if (terminalMode === 'write-body') {
-          // Convert \n strings to actual newlines for formatting
-          pendingPost.body = input.replace(/\\n/g, '\n');
+          // Convert \n to newlines and [img:url] to markdown image syntax
+          pendingPost.body = input
+            .replace(/\\n/g, '\n')
+            .replace(/\[img:(.*?)\]/g, '![]($1)');
           terminalContent.innerHTML += '<div style="color: var(--color-accent);">&gt; ' + escapeHtml(input) + '</div>';
           terminalContent.innerHTML += '<div>enter image URL (or leave empty and press enter):</div>';
           terminalMode = 'write-image';
